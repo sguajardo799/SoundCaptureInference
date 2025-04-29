@@ -1,0 +1,10 @@
+output_folder = 'output'
+temp_folder = 'output/temp'
+spectrogram_interval = 5  # segundos
+max_buffer_seconds = 60
+samplerate = 16000
+blocksize = 1024
+n_fft = 512
+n_mels = 64
+hop_length = 256
+dtype = 'float32'
