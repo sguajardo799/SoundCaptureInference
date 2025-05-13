@@ -1,6 +1,6 @@
 output_folder = 'output'
 temp_folder = 'output/temp'
-spectrogram_interval = 5  # segundos
+spectrogram_interval = 4  # segundos
 max_buffer_seconds = 60
 samplerate = 16000
 blocksize = 1024

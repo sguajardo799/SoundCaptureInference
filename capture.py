@@ -19,7 +19,7 @@ def parse_arguments():
 def main():
     args = parse_arguments()
 
-    audio_handler = AudioHandler(channels=args.channels)
+    audio_handler = AudioHandler(channels=args.channels, step_duration_seconds=2)
     spectrogram_handler = SpectrogramHandler(save_enabled=args.save_spectrograms, channels=args.channels)
     inference_handler = None
 
@@ -52,6 +52,8 @@ def main():
             print('Finalizando grabación...')
 
     audio_handler.stop()
+    processing_thread.join()  # Espera a que termine el hilo de procesamiento
+
     audio_handler.save_all()
     spectrogram_handler.save_log()
     if inference_handler:

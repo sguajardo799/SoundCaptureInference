@@ -1,5 +1,3 @@
-# processing/spectrogram_handler.py
-
 import librosa
 import librosa.display
 import matplotlib.pyplot as plt
@@ -33,9 +31,17 @@ class SpectrogramHandler:
             filename = f"spectrogram_{self.counter:05d}_ch{ch}.png"
             filepath = os.path.join(output_folder, filename)
 
-            plt.figure(figsize=(8, 4))
             x_coords = np.arange(mel_spec_db.shape[1]) * hop_length / samplerate + timestamp_seconds
-            librosa.display.specshow(mel_spec_db, sr=samplerate, hop_length=hop_length, x_axis='time', y_axis='mel', x_coords=x_coords)
+
+            plt.figure(figsize=(8, 4))
+            librosa.display.specshow(
+                mel_spec_db,
+                sr=samplerate,
+                hop_length=hop_length,
+                x_axis='time',
+                y_axis='mel',
+                x_coords=x_coords
+            )
             plt.colorbar(format='%+2.0f dB')
             plt.title(f'Spectrogram {self.counter} Channel {ch}')
             plt.tight_layout()
